@@ -47,7 +47,7 @@ namespace Tuan_1.Class
                 
                     + Khi bạn gọi DownloadPageAsync từ luồng chính, nó bắt đầu thực thi đoạn mã bên trong phương thức.
 
-                    + Trong phương thức DownloadPageAsync, khi bạn gọi _httpClient.GetAsync(url), nó gửi yêu cầu HTTP GET đến URL đã cho, và tại điểm này, nó tạo ra một yêu cầu I/O bất đồng bộ.
+                    + Trong phương thức DownloadPageAsync, khi bạn gọi _httpClient.SendAsync(request), nó gửi request đó đến URL đã cho, và tại điểm này, nó tạo ra một yêu cầu I/O bất đồng bộ.
 
                     + Thay vì chặn luồng chính và chờ cho đến khi yêu cầu I/O hoàn thành, await được sử dụng, cho phép luồng chính tiếp tục thực hiện các công việc khác.
 
