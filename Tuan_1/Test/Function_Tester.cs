@@ -12,7 +12,10 @@ namespace Tuan_1.Test
             // Đợi cho đến khi htmlCodeTask hoàn thành và lấy giá trị thực tế
             string? htmlContent = await htmlContentTask;
 
-            HtmlFileSaver.SaveHtmlToFile("C:\\Users\\tmt01\\OneDrive\\Máy tính\\crawler.txt", htmlContent);
+            if (htmlContent != null)
+            {
+                FileSaver.SaveHtmlToFile("C:\\Users\\tmt01\\OneDrive\\Máy tính\\crawler.txt", htmlContent);
+            }
         }
     }
 }

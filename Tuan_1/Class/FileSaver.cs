@@ -1,7 +1,7 @@
 ﻿namespace Tuan_1.Class
 {
-    // class này chịu trách nhiệm lưu đoạn mã html vào file
-    public static class HtmlFileSaver
+    // Class này chịu trách nhiệm lưu data vào file
+    public static class FileSaver
     {
         public static void SaveHtmlToFile(string fileName, string? htmlCode)
         {

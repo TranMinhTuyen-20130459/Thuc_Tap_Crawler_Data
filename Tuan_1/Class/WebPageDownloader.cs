@@ -1,21 +1,31 @@
-﻿namespace Tuan_1.Class
+﻿using System.Net;
+
+namespace Tuan_1.Class
 {
-    // class này chịu trách nhiệm tải trang web
+    // Class này chịu trách nhiệm tải trang web
     public class WebPageDownloader
     {
         private HttpClient _httpClient;
 
         public WebPageDownloader()
         {
+            // Thiết lập phiên bản TLS 1.2 cho HttpClient
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+
             _httpClient = new HttpClient();
+            _httpClient.DefaultRequestHeaders.Add("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36 Edg/tuyen-test");
+            _httpClient.DefaultRequestHeaders.ConnectionClose = false;
         }
 
         public async Task<string?> DownloadPageAsync(string url)
         {
             try
             {
-                // Gửi yêu cầu HTTP GET đến URL
-                HttpResponseMessage response = await _httpClient.GetAsync(url);
+                // Tạo yêu cầu HTTP tùy chỉnh với tiêu đề và nội dung như mô tả
+                var request = new HttpRequestMessage(HttpMethod.Get, url);
+
+                // Gửi yêu cầu HTTP với request được custom
+                HttpResponseMessage response = await _httpClient.SendAsync(request);
 
                 // Nếu server trả về trạng thái 200(Ok)
                 if (response.IsSuccessStatusCode)
